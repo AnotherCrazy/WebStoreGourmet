@@ -68,7 +68,47 @@ session_start();
                     </li>
                     <li class="nav-item divisor"></li>
                     <li class="nav-item">
-                        <a href="cadastro.html" class="nav-link">Inscrever-se</a>
+                         <!-- Button trigger modal -->
+                         <div id="dados-usuario">
+                         <button type='button' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#cadUsuarioModal'>Cadastrar</button>
+                    </div>
+                    <?php
+                    ?>
+                    <!-- Modal -->
+                      <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="cadUsuarioModalLabel">Cadastrar</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form id="cad-usuario-form">
+                                  <span id="msgAlertErroCad"></span>
+
+                                  <div class="mb-3">
+                                      <label for="cadnome" class="col-form-label">Nome:</label>
+                                      <input type="text" name="cadnome" class="form-control" id="cadnome" placeholder="Digite o nome completo">
+                                  </div>
+
+                                  <div class="mb-3">
+                                      <label for="cademail" class="col-form-label">E-mail:</label>
+                                      <input type="email" name="cademail" class="form-control" id="cademail" placeholder="Digite o seu melhor e-mail">
+                                  </div>
+
+                                  <div class="mb-3">
+                                      <label for="cadsenha" class="col-form-label">Senha:</label>
+                                      <input type="password" name="cadsenha" class="form-control" id="cadsenha" autocomplete="on" placeholder="Digite a senha">
+                                  </div>
+
+                                  <div class="mb-3">
+                                      <input type="submit" class="btn btn-outline-success bt-sm" id="cad-usuario-btn" value="Cadastrar">
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
                     </li>
                     <li class="nav-item divisor"></li>
                     <li class="nav-item">
@@ -83,11 +123,13 @@ session_start();
                         echo "Bem vindo " . $_SESSION['nome'] . "<br>";
                         echo "<a href='sair.php'>Sair</a><br>";
                     }else{
-                        echo "<div id='dados-usuario'>";
-                         echo "</div>";
+                        
                     }
-
+                    
                     ?>
+                    <div class=""> 
+                      <span id ="msgAlert"></span>
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
