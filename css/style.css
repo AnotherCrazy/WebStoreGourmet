@@ -167,6 +167,10 @@ footer ul li{
     
 }
 
+.m-3 {
+    margin: 0.1rem!important;
+}
+
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) { 
     .btn-custom{

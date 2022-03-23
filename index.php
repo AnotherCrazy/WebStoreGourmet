@@ -68,95 +68,84 @@ session_start();
                     </li>
                     <li class="nav-item divisor"></li>
                     <li class="nav-item">
-                         <!-- Button trigger modal -->
-                         <div id="dados-usuario">
-                         <button type='button' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#cadUsuarioModal'>Cadastrar</button>
-                    </div>
-                    <?php
-                    ?>
-                    <!-- Modal -->
-                      <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="cadUsuarioModalLabel">Cadastrar</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                              <form id="cad-usuario-form">
-                                  <span id="msgAlertErroCad"></span>
+                    <div class="container text-center">
 
-                                  <div class="mb-3">
-                                      <label for="cadnome" class="col-form-label">Nome:</label>
-                                      <input type="text" name="cadnome" class="form-control" id="cadnome" placeholder="Digite o nome completo">
-                                  </div>
+        <?php
+        if(isset($_SESSION['id']) and (isset($_SESSION['nome']))){
+            echo "Bem vindo " . $_SESSION['nome'] . "<br>";
+            echo "<a href='sair.php'>Sair</a><br>";
+        }else{
+            echo "<div id='dados-usuario'>";
+            echo "<button type='button' class='btn btn-outline-primary m-3' data-bs-toggle='modal' data-bs-target='#loginModal'>Acessar</button>";
+            echo "<button type='button' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#cadUsuarioModal'>Cadastrar</button>";
+            echo "</div>";
+        }
 
-                                  <div class="mb-3">
-                                      <label for="cademail" class="col-form-label">E-mail:</label>
-                                      <input type="email" name="cademail" class="form-control" id="cademail" placeholder="Digite o seu melhor e-mail">
-                                  </div>
+        ?>
 
-                                  <div class="mb-3">
-                                      <label for="cadsenha" class="col-form-label">Senha:</label>
-                                      <input type="password" name="cadsenha" class="form-control" id="cadsenha" autocomplete="on" placeholder="Digite a senha">
-                                  </div>
+    </div>
 
-                                  <div class="mb-3">
-                                      <input type="submit" class="btn btn-outline-success bt-sm" id="cad-usuario-btn" value="Cadastrar">
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-                    </li>
-                    <li class="nav-item divisor"></li>
-                    <li class="nav-item">
-                        <!-- Button trigger modal -->
-                        <div id="dados-usuario">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">
-                      Login
-                    </button>
-                    </div>
-                    <?php
-                    if(isset($_SESSION['id']) and (isset($_SESSION['nome']))){
-                        echo "Bem vindo " . $_SESSION['nome'] . "<br>";
-                        echo "<a href='sair.php'>Sair</a><br>";
-                    }else{
-                        
-                    }
-                    
-                    ?>
-                    <div class=""> 
-                      <span id ="msgAlert"></span>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                            <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-                          </div>
-                          <div class="modal-body">
-                            <form id="login-usuario-form">
-                              <span id="msgAlertErroLogin"></span>
-                              <div class="mb-3">
-                                <label for="email" class="col-form-label">E-mail:</label>
-                                <input type="text" name="email" class="form-control" id="email" placeholder="Digite o E-mail">
-                              </div>
-                              <div class="mb-3">
-                                <label for="senha" class="col-form-label">Senha:</label>
-                                <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
-                              </div>
-                              <div class="mb-3">
-                                <input type="submit" class="btn btn-outline-success bt-sm" id="login-usario btn" value="Acessar">
-                              </div>
-                            </form>
-                          </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Área Restrita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-usuario-form">
+                        <span id="msgAlertErroLogin"></span>
+                        <div class="mb-3">
+                            <label for="email" class="col-form-label">Usuário:</label>
+                            <input type="text" name="email" class="form-control" id="email" placeholder="Digite o usuário">
                         </div>
-                      </div>
-                    </div>
+                        <div class="mb-3">
+                            <label for="senha" class="col-form-label">Senha:</label>
+                            <input type="password" name="senha" class="form-control" id="senha" autocomplete="on" placeholder="Digite a senha">
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-outline-primary bt-sm" id="login-usuario-btn" value="Acessar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cadUsuarioModalLabel">Cadastrar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="cad-usuario-form">
+                        <span id="msgAlertErroCad"></span>
+
+                        <div class="mb-3">
+                            <label for="cadnome" class="col-form-label">Nome:</label>
+                            <input type="text" name="cadnome" class="form-control" id="cadnome" placeholder="Digite o nome completo">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cademail" class="col-form-label">E-mail:</label>
+                            <input type="email" name="cademail" class="form-control" id="cademail" placeholder="Digite o seu melhor e-mail">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cadsenha" class="col-form-label">Senha:</label>
+                            <input type="password" name="cadsenha" class="form-control" id="cadsenha" autocomplete="on" placeholder="Digite a senha">
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-outline-success bt-sm" id="cad-usuario-btn" value="Cadastrar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
                     </li>
                 </ul>
             </div>
@@ -166,6 +155,9 @@ session_start();
             
      <!--Fim do cabeçalho-->
         </header>
+        <div class="">
+            <span id="msgAlert"></span>
+        </div>
 
         <section id="home" class="d-flex"> <!--Home-->
             <div class="container align-self-center"> <!--Container-->

@@ -30,7 +30,10 @@ if (empty($dados['cadnome'])) {
         $cad_usuario->execute();
 
         if ($cad_usuario->rowCount()) {
-            $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Usuário cadastrado com sucesso!</div>"];
+            $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            <strong>Você conseguiu se cadastrou com sucesso.</strong> Agora você ja pode aproveitar a nossa loja!
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>"];
         } else {
             $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Usuário não cadastrado com sucesso!</div>"];
         }
